@@ -22,14 +22,18 @@ android {
     }
 
     buildTypes {
+
+        applicationVariants.all { variant ->
+            variant.buildConfigField "String", "NEWS_READER_API_KEY", "\"" + getApiKey() + "\""
+        }
+
+//        buildTypes.each {
+//            it.buildConfigField 'String', 'NEWS_READER_API_KEY', keystoreProperties[NewsApiKey]
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    }
-
-    buildTypes.each {
-        it.buildConfigField 'String', 'NEWS_READER_API_KEY', NEWS_READER_API_KEY
     }
 
     packagingOptions {
@@ -43,6 +47,16 @@ android {
     configurations.all {
         resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
     }
+
+    def keystorePropertiesFile = rootProject.file("keystore.properties")
+    def keystoreProperties = new Properties()
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+static def getApiKey() {
+    Properties props = new Properties()
+    props.load(new FileInputStream(new File('keystore.properties')))
+    return props['NEWS_READER_API_KEY']
 }
 
 dependencies {
@@ -51,11 +65,11 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    compile "com.android.support:appcompat-v7:$support_lib_version"
-    compile "com.android.support:support-v4:$support_lib_version"
-    compile "com.android.support:design:$support_lib_version"
-    compile "com.android.support:cardview-v7:$support_lib_version"
-    compile "com.android.support:recyclerview-v7:$support_lib_version"
+    compile "com.android.support:appcompat-v7:26.1.0"
+    compile "com.android.support:support-v4:26.1.0"
+    compile "com.android.support:design:26.1.0"
+    compile "com.android.support:cardview-v7:26.1.0"
+    compile "com.android.support:recyclerview-v7:26.1.0"
 
     compile 'com.google.android:flexbox:0.2.5'
 
@@ -96,3 +110,4 @@ repositories {
 kapt {
     generateStubs = true
 }
+
