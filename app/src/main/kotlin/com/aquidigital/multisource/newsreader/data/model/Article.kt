@@ -1,4 +1,4 @@
-package com.aquidigital.multisource.newsreader.model
+package com.aquidigital.multisource.newsreader.data.model
 
 import com.aquidigital.multisource.newsreader.util.DateToLongDeserializer
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
