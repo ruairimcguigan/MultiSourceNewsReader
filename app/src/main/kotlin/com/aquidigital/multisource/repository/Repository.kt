@@ -7,7 +7,7 @@ import java.io.Closeable
 
 interface Repository <T> :Closeable where T : RealmModel {
 
-    fun getById(d: String): T?
+    fun getById(id: String): T?
 
     fun add(item: T)
 
@@ -22,6 +22,8 @@ interface Repository <T> :Closeable where T : RealmModel {
     fun count(): Long
 
     fun count(filter: RealmQuery<T>.() -> Unit): Long
+
+    suspend fun updateAsync(vararg ids: String, modifier: T.() -> Unit)
 
     suspend fun query(filter: RealmQuery<T>.() -> Unit, sortFields: Array<String>?, orders: Array<Sort>?): List<T>
 
