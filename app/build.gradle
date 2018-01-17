@@ -27,9 +27,6 @@ android {
             variant.buildConfigField "String", "NEWS_READER_API_KEY", "\"" + getApiKey() + "\""
         }
 
-//        buildTypes.each {
-//            it.buildConfigField 'String', 'NEWS_READER_API_KEY', keystoreProperties[NewsApiKey]
-
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
