@@ -10,6 +10,12 @@ open class Source : RealmObject() {
 	lateinit var id: String
 	lateinit var name: String
 
+	var description: String? = null
+	var url: String? = null
+	var category: String? = null
+	var language: String? = null
+	var country: String? = null
+
 	@JsonIgnore
 	var lastSyncDate = 0L
 }

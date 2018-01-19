@@ -9,14 +9,14 @@ import io.realm.annotations.PrimaryKey
 open class Article : RealmObject(){
 
     @PrimaryKey
-    lateinit var  url: String
+    lateinit var url: String
     lateinit var title: String
 
     lateinit var source: Source
-    lateinit var author: String
-    lateinit var description: String
-    lateinit var urlToImage: String
-    lateinit var category: String
+    var author: String? = null
+    var description: String? = null
+    var urlToImage: String? = null
+    var category: String? = null
 
     @JsonDeserialize(using = DateToLongDeserializer::class) // not supported in realm
     var publishedAt: Long? = null

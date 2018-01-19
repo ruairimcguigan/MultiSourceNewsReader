@@ -16,6 +16,8 @@ buildscript {
     }
 }
 
+ext.anko_version='0.10.4'
+
 allprojects {
     repositories {
         google()
