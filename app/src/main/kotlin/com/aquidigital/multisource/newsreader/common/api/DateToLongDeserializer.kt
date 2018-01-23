@@ -1,4 +1,4 @@
-package com.aquidigital.multisource.newsreader.util
+package com.aquidigital.multisource.newsreader.common.api
 
 import com.fasterxml.jackson.core.JsonParser
 import com.fasterxml.jackson.databind.DeserializationContext

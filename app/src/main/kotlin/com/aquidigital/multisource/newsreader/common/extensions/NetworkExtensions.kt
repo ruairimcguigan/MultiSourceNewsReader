@@ -1,4 +1,4 @@
-package com.aquidigital.multisource.newsreader.Extensions
+package com.aquidigital.multisource.newsreader.common.extensions
 
 import retrofit2.Call
 import retrofit2.Callback

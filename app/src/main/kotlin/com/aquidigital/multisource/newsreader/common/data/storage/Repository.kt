@@ -1,4 +1,4 @@
-package com.aquidigital.multisource.repository
+package com.aquidigital.multisource.newsreader.common.data.storage
 
 import io.realm.RealmModel
 import io.realm.RealmQuery

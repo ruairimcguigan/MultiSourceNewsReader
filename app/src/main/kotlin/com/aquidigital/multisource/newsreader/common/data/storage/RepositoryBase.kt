@@ -1,7 +1,7 @@
-package com.aquidigital.multisource.repository
+package com.aquidigital.multisource.newsreader.common.data.storage
 
-import com.aquidigital.multisource.newsreader.Extensions.inTransactionAsync
-import com.aquidigital.multisource.newsreader.Extensions.loadAsync
+import com.aquidigital.multisource.newsreader.common.extensions.inTransactionAsync
+import com.aquidigital.multisource.newsreader.common.extensions.loadAsync
 import io.realm.Realm
 import io.realm.RealmModel
 import io.realm.RealmQuery

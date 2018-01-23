@@ -3,9 +3,8 @@ package com.aquidigital.multisource.newsreader
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import com.aquidigital.multisource.newsreader.api.NewsApi
-import com.aquidigital.multisource.newsreader.data.model.HeadlineResponse
-import com.aquidigital.multisource.newsreader.data.model.SourceResponse
+import com.aquidigital.multisource.newsreader.common.api.NewsApi
+import com.aquidigital.multisource.newsreader.common.data.model.ArticlesResponse
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -47,22 +46,19 @@ class MainActivity : AppCompatActivity() {
 
         val userClient = retrofit.create(NewsApi::class.java)
 
-        val call: Call<SourceResponse> = userClient.getSources(
-                "business",
-                "de",
-                "de"
+        val call: Call<ArticlesResponse> = userClient.getSearchResults("business", null, null, null, null)
 
-        )
-        call.enqueue(object : Callback<SourceResponse> {
-            override fun onResponse(call: Call<SourceResponse>?,
-                                    response: Response<SourceResponse>?) {
+        call.enqueue(object : Callback<ArticlesResponse> {
+            override fun onResponse(call: Call<ArticlesResponse>?,
+                                    response: Response<ArticlesResponse>?) {
 
                 if (response != null && response.isSuccessful) {
-                    outputView.text = response.body()?.sources?.get(1)?.description
+                    outputView.text = response.body()?.articles?.get(1)?.title
                 }
             }
-            override fun onFailure(call: Call<SourceResponse>?, t: Throwable?) {
-                toast("fail")
+            override fun onFailure(call: Call<ArticlesResponse>?, t: Throwable?) {
+                toast(t?.localizedMessage.toString())
+                Log.DEBUG
             }
         })
     }

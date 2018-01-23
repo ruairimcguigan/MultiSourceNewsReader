@@ -1,4 +1,4 @@
-package com.aquidigital.multisource.newsreader.data.model
+package com.aquidigital.multisource.newsreader.common.data.model
 
 class SourceResponse {
 	val status: String? = null
